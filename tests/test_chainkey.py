@@ -19,10 +19,16 @@ class TestChainKey(unittest.TestCase):
     def test_segmentation(self):
         # data provided by http://www.catipsum.com/
         data = "Cough enslave the hooman yet climb into cupboard and lick the salt off rice cakes. Always hungry this human feeds me, i should be a god, murder hooman toes show belly sleep in the bathroom sink refuse to drink water except out of someone's glass love. Scratch so owner bleeds cats secretly make all the worlds muffins all of a sudden cat goes crazy climb leg, for trip on catnip or missing until dinner time. I could pee on this if i had the energy mewl for food at 4am always ensure to lay down in such a manner that tail can lightly brush human's nose but grab pompom in mouth and put in water dish or ooh, are those your $250 dollar sandals? lemme use that as my litter box nyan nyan goes the cat."
-        num_chunks = 9
+        num_chunks = 4
 
         segmented_data, chunk_order = data_segmentation(data, num_chunks)
         restored_data = data_restored(segmented_data, chunk_order)
+
+        # used to debug
+        print("Original data: ", data)
+        print("Segmented data: ", segmented_data)
+        print("Chunk order: ", chunk_order)
+        print("Restored data: ", restored_data)
 
         self.assertNotEqual(data, segmented_data)
         self.assertEqual(data, restored_data)
