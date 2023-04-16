@@ -22,4 +22,10 @@ class TestChainKey(unittest.TestCase):
         num_chunks = 9
 
         segmented_data, chunk_order = data_segmentation(data, num_chunks)
-        restored_data = data_restored
+        restored_data = data_restored(segmented_data, chunk_order)
+
+        self.assertNotEqual(data, segmented_data)
+        self.assertEqual(data, restored_data)
+
+if __name__ == "__main__":
+    unittest.main()

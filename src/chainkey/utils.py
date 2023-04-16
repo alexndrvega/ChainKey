@@ -14,7 +14,7 @@ def data_segmentation(data, num_chunks):
     chunks = [data[i:j] for i, j in zip(chunk_indices[:-1], chunk_indices[1:])]
     random.shuffle(chunks)
 
-    chunk_order = [chunk_indices[chunks.index(chunks)] for chunk in chunks]
+    chunk_order = [chunk_indices[chunks.index(chunk)] for chunk in chunks]
     return ''.join(chunks), chunk_order
 
 # data_restor
@@ -22,6 +22,6 @@ def data_restored(segments, chunk_order):
     ordered_segments = [None] * len(chunk_order)
 
     for i, chunk_start in enumerate(chunk_order):
-        ordered_segments[chunk_start] = segments[i]
+        ordered_segments[chunk_order.index(chunk_start)] = segments[i]
 
     return ''.join(ordered_segments)
