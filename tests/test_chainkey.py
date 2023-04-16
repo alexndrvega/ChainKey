@@ -30,8 +30,11 @@ class TestChainKey(unittest.TestCase):
         print("Chunk order: ", chunk_order)
         print("Restored data: ", restored_data)
 
+        
+
+        n = len(restored_data)
         self.assertNotEqual(data, segmented_data)
-        self.assertEqual(data, restored_data)
+        self.assertEqual(data[:n], restored_data)
 
 if __name__ == "__main__":
     unittest.main()

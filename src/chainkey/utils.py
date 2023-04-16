@@ -21,10 +21,12 @@ def data_segmentation(data, num_chunks):
 # data_restored
 def data_restored(segments, chunk_order):
     ordered_segments = [None] * len(segments)
-    chunk_size = len(segments[0])
-
+    sorted_chunk_order = sorted(chunk_order)
+    
     for i, chunk_start in enumerate(chunk_order):
-        ordered_segments[chunk_start // chunk_size] = segments[i]
+        index = sorted_chunk_order.index(chunk_start)
+        ordered_segments[index] = segments[i]
+
 
     restored_data = ''.join(segment for segment in ordered_segments if segment is not None)
     return restored_data
