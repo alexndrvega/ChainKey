@@ -16,15 +16,15 @@ def data_segmentation(data, num_chunks):
 
     chunk_order = [chunk_indices[chunks.index(chunk)] for chunk in chunks]
 
-    return ''.join(chunks), chunk_order
+    return chunks, chunk_order
 
-# data_restor
+# data_restored
 def data_restored(segments, chunk_order):
-    num_chunks = len(chunk_order)
-    ordered_segments = [None] * num_chunks
+    ordered_segments = [None] * len(segments)
+    chunk_size = len(segments[0])
 
     for i, chunk_start in enumerate(chunk_order):
-        chunk_index = chunk_order.index(chunk_start)
-        ordered_segments[chunk_index] = segments[i]
+        ordered_segments[chunk_start // chunk_size] = segments[i]
 
-    return ''.join(ordered_segments)
+    restored_data = ''.join(segment for segment in ordered_segments if segment is not None)
+    return restored_data
