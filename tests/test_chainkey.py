@@ -2,7 +2,7 @@
 
 import unittest
 from src.chainkey.encryption import data_encryptor, data_decryptor
-from src.chainkey.utils import data_segmentation, data_restore
+from src.chainkey.utils import data_segmentation, data_restored
 
 class TestChainKey(unittest.TestCase):
     def test_encrypt_decrypt(self):
@@ -21,5 +21,5 @@ class TestChainKey(unittest.TestCase):
         data = "Cough enslave the hooman yet climb into cupboard and lick the salt off rice cakes. Always hungry this human feeds me, i should be a god, murder hooman toes show belly sleep in the bathroom sink refuse to drink water except out of someone's glass love. Scratch so owner bleeds cats secretly make all the worlds muffins all of a sudden cat goes crazy climb leg, for trip on catnip or missing until dinner time. I could pee on this if i had the energy mewl for food at 4am always ensure to lay down in such a manner that tail can lightly brush human's nose but grab pompom in mouth and put in water dish or ooh, are those your $250 dollar sandals? lemme use that as my litter box nyan nyan goes the cat."
         num_chunks = 9
 
-        data_segmentation, chunk_order = data_segmentation(data, num_chunks)
-        data_restore
+        segmented_data, chunk_order = data_segmentation(data, num_chunks)
+        restored_data = data_restored
