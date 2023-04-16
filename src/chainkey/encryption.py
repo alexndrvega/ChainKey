@@ -19,7 +19,7 @@ def key_generation(password, salt, iterations=100000):
     )
     return pbk.derive(password.encode())
 
-# data encryptor
+# data_encryptor: takes plaintext and passwords as input
 def data_encryptor(data, password):
     salt = urandom(16)
     key = key_generation(password, salt)
@@ -35,7 +35,7 @@ def data_encryptor(data, password):
 
     return base64.b64encode(salt + iv + encrypted_data).decode('utf-8')
 
-# data decryptor
+# data_decryptor: decrypts the data as plaintext
 def data_decryptor(encrypted_data, password):
     encrypted_data = base64.b64decode(encrypted_data.encode('utf-8'))
 
