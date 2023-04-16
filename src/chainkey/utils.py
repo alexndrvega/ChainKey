@@ -18,7 +18,7 @@ def data_segmentation(data, num_chunks):
     return ''.join(chunks), chunk_order
 
 # data_restor
-def data_restor(segments, chunk_order):
+def data_restore(segments, chunk_order):
     ordered_segments = [None] * len(chunk_order)
 
     for i, chunk_start in enumerate(chunk_order):
